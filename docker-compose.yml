@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  test-test1:
+    build:
+      context: test1/
+      dockerfile: Dockerfile
+    command: python3 -m unittest small_tests.test1
+    volumes:
+      - ./test1:/app
+
+  test-test2:
+    build:
+      context: test2/
+      dockerfile: Dockerfile
+    command: python3 -m unittest tests.test2
+    # command: python3 -m unittest discover -v
+    volumes:
+      - ./test2:/app

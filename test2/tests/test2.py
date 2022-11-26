@@ -1,8 +1,8 @@
-from .simple_flask import app
+from simple_flask import app
 import unittest
 
 
-class FlastTest(unittest.TestCase):
+class TestFlask(unittest.TestCase):
     def test_index(self):
         tester = app.test_client(self)
         response = tester.get("/")
