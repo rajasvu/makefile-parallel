@@ -1,4 +1,4 @@
-from simple_flask import app
+from .simple_flask import app
 import unittest
 
 
