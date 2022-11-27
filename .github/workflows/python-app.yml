@@ -40,3 +40,29 @@ jobs:
       run: |
         cd ${{matrix.repository}}
         pytest -n 3
+  
+  sequential:
+    strategy:
+      matrix:
+        repository: ["test1", "test2"]
+        
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        cd ${{matrix.repository}}
+        python -m pip install --upgrade pip
+        python -m pip install pytest
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: List python package dependencies
+      run: python -m pip list
+
+    - name: Test with pytest
+      run: |
+        cd ${{matrix.repository}}
+        pytest
