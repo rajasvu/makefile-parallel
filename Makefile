@@ -10,10 +10,10 @@ install-deps:
 	$(TEST_DIR)/$(PYTHON) -m pip install -r $(TEST_DIR)/requirements.txt
 
 test-test1:
-	test1/$(PYTHON) -m unittest test1.small_tests.test1
+	cd test1 && $(PYTHON) -m unittest small_tests.test1
 
 test-test2:
-	test2/$(PYTHON) -m unittest test2.test2
+	cd test2 && $(PYTHON) -m unittest tests.test2
 
 test-parallel: test-test1 test-test2
 
