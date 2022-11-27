@@ -33,6 +33,9 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: List python package dependencies
+      run: python -m pip list
+
     - name: Test with pytest
       run: |
         cd ${{matrix.repository}}
